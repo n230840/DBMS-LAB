@@ -1,0 +1,18 @@
+use gram_panchayat_db;
+select * from gram_panchayat;
+select * from certificate_type;
+select * from certificate_application;
+select * from panchayat_office;
+insert into gram_panchayat values(7,"Nageswar","1995-10-23","Male",9182217246,"Gamer","pedana",true);
+insert into certificate_type values(7,"Income certificate","Provides Income certificates services",10,30.00,true);
+update certificate_application set application_status ="under review" where application_id = 1001;
+update certificate_application set application_status = "approved" where application_id = 1002;
+update gram_panchayat set occupation = "Electrical Technician" where citizen_id = 5;
+update certificate_type set processing_days = 12 where certificate_name = "property certificate";
+update certificate_type set is_available = true where certificate_name ="No-Dues certificate";
+delete from gram_panchayat where citizen_id =7;
+alter table gram_panchayat add address varchar(100);
+alter table certificate_application add issued_date date;
+alter table panchayat_office add closing_time time;
+alter table certificate_application modify column purpose varchar(300);
+create table temporary_request(request_id primary key,request_name not full , request_date not full);
