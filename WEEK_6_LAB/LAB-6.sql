@@ -13,14 +13,14 @@ select  application_date
 from certificate_application 
 where application_date = (
 select max(application_date)
-from certificate_application);
+from certificate_application); --
 
 
-select * 
+select application_date
 from certificate_application
 where application_date = (
 select min(application_date)
-from certificate_application);
+from certificate_application); --
 
 
 
@@ -28,76 +28,76 @@ select *
 from certificate_application
 where application_date = (
 select max(application_date)
-from certificate_application);
+from certificate_application); --
 
 
 select application_id 
 from certificate_application
 where application_date = (
 select min(application_date)
-from certificate_application);
+from certificate_application); --
 
 
-select *
+select full_name
 from  citizen
 where citizen_id in (
 select citizen_id
 from certificate_application
-where application_status = "approved" ); 
+where application_status = "approved" ); -- 
 
 
-select *
+select application_id
 from certificate_application
 where application_date > any (
 select min(application_date)
-from certificate_application);
+from certificate_application); --
 
 
-select *
+select application_id
 from certificate_application
 where application_date < any (
 select max(application_date)
-from certificate_application);
+from certificate_application); --
 
 
 
-select * 
+select full_name
 from citizen
 where citizen_id in (
 select citizen_id
 from certificate_application
-where application_status = "submitted");
+where application_status = "submitted"); --
 
 
 
 
-select * 
+select full_name
 from citizen
 where citizen_id not in (
 select citizen_id
 from certificate_application
-where application_status = "submitted");
+where application_status = "submitted");--
 
 select certificate_name 
 from certificate_type 
 where certificate_id in (
 select certificate_id
 from certificate_application
-where application_status = "approved");
+where application_status = "approved"); --
 
 select certificate_name 
 from certificate_type 
 where certificate_id not in (
 select certificate_id
 from certificate_application
-where application_status = "approved");
+where application_status = "approved"); --
 
 
-select *
+select application_id
 from certificate_application
 where application_date > any (
 select avg(application_date)
-from certificate_application);
+from certificate_application); --
 
 
 select ct.certificate_name , ca.application_date
@@ -106,7 +106,7 @@ join certificate_application ca
 on ct.certificate_id = ca.certificate_id
 where ca.application_date in (
 select max(application_date)
-from certificate_application); 
+from certificate_application); --
 
 
 select certificate_name
